@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use — PointDrop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 6rem;
+    background: #1C1C1E; color: #FFFFFF;
+    font: 400 1rem/1.65 Geist, system-ui, -apple-system, sans-serif;
+  }
+  main { max-width: 36rem; margin: 0 auto; }
+  h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 2.5rem; line-height: 1.15; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.0625rem; font-weight: 600; margin: 2.5rem 0 0.75rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 2rem 0 0.5rem; }
+  p, li { color: #C7C7CC; }
+  strong { color: #FFFFFF; font-weight: 600; }
+  a { color: #409CFF; }
+  ul { padding-left: 1.1rem; }
+  li { margin: 0.4rem 0; }
+  hr { border: 0; border-top: 1px solid rgba(255,255,255,0.12); margin: 2.5rem 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; color: #E5E5EA; background: rgba(255,255,255,0.07); padding: 0.1em 0.35em; border-radius: 4px; }
+  em { color: #8E8E93; font-style: italic; }
+  footer { max-width: 36rem; margin: 4rem auto 0; color: #8E8E93; font-size: 0.875rem; }
+  footer a { color: #8E8E93; }
+</style>
+</head>
+<body>
+<main>
+<h1>Terms of Use — PointDrop</h1>
+<p><strong>DRAFT.</strong> Written from the app's actual behavior, not by a lawyer. Review with counsel before publication — this is a starting point, not a finished legal instrument, and carries no warranty of enforceability or completeness.</p>
+<p><em>Last checked against the code on 2026-09-12, at commit <code>5adb844</code>.</em></p>
+<hr>
+<h2>What PointDrop is</h2>
+<p>PointDrop transfers a single, verified destination from one phone to another using a short-lived code. It is not a maps app, a booking service, a ride-hailing service, or a messaging app, and does not arrange, broker, or guarantee any transportation.</p>
+<h2>Accuracy is the sender's responsibility</h2>
+<p>The app shows you the destination you are about to send — its name, address, and exact coordinates — before you send it. You are responsible for confirming it is correct. [Operator name] is not responsible for consequences of sending an incorrect destination.</p>
+<h2>No guarantee of delivery</h2>
+<p>A code may expire, be scanned by the wrong person, or never be scanned at all. Where a receiver page is deployed, the app shows you when a code has been opened, but this is a best-effort signal, not a guarantee. Where none is deployed, the code is a plain Google Maps link: there is no expiry, no "opened" signal, and nothing to cancel, and the send screen says so.</p>
+<h2>Acceptable use</h2>
+<p>Do not use PointDrop to send destinations for unlawful purposes, to harass or endanger another person, or to attempt to abuse, overload, or reverse engineer the service. We may delete a stored destination, or restrict access to the service, in response to abuse — but a Google Maps link already handed to someone is outside anyone's reach, ours included.</p>
+<h2>No account, no warranty of continuity</h2>
+<p>There is no account to lose access to. We do not promise the service will be available at any given time, and reserve the right to change or discontinue it.</p>
+<h2>Third-party services</h2>
+<p>Navigation happens entirely inside third-party apps (Google Maps, Apple Maps, Waze, or whichever the recipient chooses) once they leave the receiver page — or, where no receiver page is deployed, the moment they scan the code, which opens Google Maps directly. Their own terms govern that navigation. Map tiles and, where configured, place search are provided by third parties described in the <a href="./PRIVACY_POLICY.md">Privacy Policy</a>.</p>
+<h2>Limitation of liability</h2>
+<p>[Operator: standard limitation-of-liability language, reviewed by counsel for your jurisdiction, belongs here.]</p>
+<h2>Governing law</h2>
+<p>[Operator: insert the jurisdiction whose law governs these terms.]</p>
+<h2>Changes to these terms</h2>
+<p>[Operator: describe how you will notify users of material changes.]</p>
+<h2>Contact</h2>
+<p>[Operator: insert a real contact method before publishing.]</p>
+<hr>
+<p>_To publish: host this page publicly, then set <code>EXPO_PUBLIC_TERMS_URL</code> in <code>mobile/.env</code> (or your EAS build secrets) to its URL._</p>
+</main>
+<footer><a href="./">PointDrop</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></footer>
+</body>
+</html>
