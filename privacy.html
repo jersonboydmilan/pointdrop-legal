@@ -32,38 +32,48 @@
 </head>
 <body>
 <main>
-<h1>Privacy Policy — PointDrop</h1>
-<p><strong>DRAFT.</strong> This document was generated from the app's actual code behavior, not written by a lawyer. It must be reviewed by qualified counsel before publication — data protection law (GDPR, CCPA, Play Store's Data Safety requirements) varies by jurisdiction and this draft makes no claim of compliance. Treat every sentence below as a starting point to verify against the code, not a finished legal instrument.</p>
-<p><em>Last checked against the code on 2026-09-12, at commit <code>5adb844</code>.</em></p>
-<hr>
-<h2>What this app is</h2>
-<p>PointDrop hands a single geographic destination from one phone to another. It has no accounts, no login, and no user profile of any kind.</p>
-<h2>What we collect, and why</h2>
-<p><strong>A destination you choose to send.</strong> When you send a destination, its name, address, and coordinates are stored on our server for as long as the code is valid (5–60 minutes, your choice), then automatically deleted. We store only a cryptographic hash of the code itself — never the code your driver scans.</p>
-<p><strong>A random, temporary device identifier.</strong> Each time you open the app, it generates a random string used only to prevent one device from creating excessive codes in a short time. It is not stored on your device, is not linked to any personal identifier, and is discarded when the app closes.</p>
-<p><strong>A random installation identifier, for search.</strong> Every place search costs us money, so searches are limited per installation. The first time you search, the app generates a random string and keeps it in its own storage until you uninstall the app. It is not derived from your device, your accounts, or your advertising ID, and it is sent only with search requests. Our server keeps only a one-way hash of it next to a request count, and a scheduled purge deletes that count within about a day.</p>
-<p><strong>Your network (IP) address.</strong> Every server sees the address a request comes from. Ours uses it only to limit how many requests one address can make: search keeps a shortened hash of it, and code creation counts against the address itself. Both counts are deleted by the same purge within about a day, and the address is never used to work out where you are.</p>
-<p><strong>Your location, if you allow it.</strong> Used only to show nearby places on the map and to bias search results toward where you are. It is read from your device and passed through our server to our search provider (see "Third parties" below) as part of a search request; it is never stored or logged on our servers.</p>
-<p><strong>Places you search for, pin, or have sent before.</strong> Your list of them is kept only on your device, in local app storage, and never sent to us. (The text of a search passes through our server on its way to the search provider; it is not stored or logged there.) Capped at 8 recent entries, deduplicated, and cleared any time you choose to clear it — with a confirmation step, since this cannot be undone.</p>
-<p><strong>Anonymous usage counters.</strong> We record that a code was created, opened, or led to navigation — never who did it. These counters are deleted along with the destination they describe, on the same schedule.</p>
-<h2>What we do not collect</h2>
-<p>We do not collect your name, email, phone number, or any persistent identifier other than the random installation identifier described above. We do not use analytics SDKs, advertising identifiers, or third-party trackers. We do not build a history of where you have been — your search history lives only on your phone and only until you clear it.</p>
-<h2>Third parties</h2>
-<ul><li><strong>Search and maps.</strong> Place search is handled by Geoapify (built on OpenStreetMap data) or Google Places API, whichever the operator has configured, reached through our server so that the app itself holds no search credentials — or by your device's own location services when our server is not configured. Map tiles are drawn from OpenStreetMap. Your search text and, when you grant permission, your approximate location, are passed to whichever provider is active; our server does not store or log them. Their own privacy policies govern that data.</li><li><strong>Google Maps, at hand-off.</strong> Where no receiver page is deployed, the code itself is a Google Maps link, and scanning it hands the destination to Google under their privacy policy. This is the same as pasting the link into a message, and happens on the driver's phone, not ours.</li><li><strong>Hosting.</strong> The backend runs on Supabase; the receiver page (what a driver sees when they scan a code) runs on whatever host the operator has deployed it to.</li></ul>
-<h2>What a driver sees</h2>
-<p><strong>When the operator has deployed the receiver page.</strong> The page a driver opens has no app, no account, and no cookies. It reads the destination tied to the code they scanned, shows it, and offers to open it in their own maps app. It records, anonymously, that the page was opened and that navigation was launched — nothing that identifies the driver.</p>
-<p><strong>When no receiver page is deployed</strong> — the configuration this app ships with today — the code is a direct Google Maps link built from the destination's coordinates. Scanning it opens Google Maps, and from that moment Google's own privacy policy governs what happens; we see nothing, so no "opened" or "navigated" signal is ever recorded.</p>
-<h2>Your controls</h2>
-<ul><li><strong>Delete your local history</strong> any time, from the app's home screen.</li><li><strong>Revoke a code</strong> you have already sent, at any time before it expires, from the send screen — *when the operator has deployed the receiver page*. Without one, the code your driver scans is an ordinary Google Maps link. It cannot expire and cannot be revoked, a photograph of the screen opens it just as well, and the app says so on the send screen rather than offering a cancel button that would not work.</li><li><strong>Deny location access</strong> — the app still works; only map-centering and search-biasing are affected.</li></ul>
-<h2>Data retention</h2>
-<p>Server-side data (a sent destination and its code) is deleted automatically shortly after the code expires — at most 61 minutes after creation, by a purge that runs every 15 minutes.</p>
-<p>One thing does outlive that window: where no receiver page is deployed, the code is a Google Maps link that carries the coordinates inside it. Deleting our copy does not unmake a link someone already holds. Send one only to a driver you mean to send it to.</p>
-<h2>Changes to this policy</h2>
-<p>[Operator: describe how you will notify users of material changes.]</p>
-<h2>Contact</h2>
-<p>[Operator: insert a real contact method — support email or form — before publishing.]</p>
-<hr>
-<p>_To publish: host this page publicly, then set <code>EXPO_PUBLIC_PRIVACY_URL</code> in <code>mobile/.env</code> (or your EAS build secrets) to its URL. The app's footer links to it once set; until then it shows the name as plain text rather than a link that goes nowhere — see <code>mobile/src/components/ambient/Colophon.tsx</code>._</p>
+<h1>Privacy Policy for PointDrop</h1>
+<p><strong>Effective Date:</strong> September 12, 2026 <strong>Last Updated:</strong> September 12, 2026</p>
+<h2>1. Introduction</h2>
+<p>This Privacy Policy describes how Jerson Boyd Milan ("we," "us," or "our") handles information in connection with the mobile application PointDrop (the "App"), available on Google Play.</p>
+<p>The App is designed to be simple and user-friendly. Its core functions are:</p>
+<ul><li>Finding a location</li><li>Generating a QR code</li><li>Sending that QR code to a driver</li></ul>
+<p><strong>Important:</strong> The App does not require user accounts or logins. We do not create user profiles, and we do not build a history of where you have been.</p>
+<h2>2. Information We Process</h2>
+<p>Because the App has no login or account system, we collect and retain very little information.</p>
+<p><strong>Location data.</strong> The App uses your device's location services (with your permission) solely to help you find and select a location so a QR code can be generated.</p>
+<ul><li>Location is processed on your device and, when needed, temporarily sent through our backend to our location provider (Geoapify) to return place information. Your search text travels the same way. Neither is stored or logged by us.</li><li>We do not store your location history or continuous tracking data.</li></ul>
+<p><strong>The destination you choose to send.</strong> When you create a code, the destination's name, address and coordinates are stored on our server so the code can be resolved, together with a one-way hash of the code itself — never the code your driver scans. A scheduled purge deletes the destination and the code shortly after it expires, at most about 61 minutes after creation.</p>
+<p><strong>Microphone.</strong> The App offers voice search: when you tap the microphone button, your device's speech recognition service listens and converts your speech to text, which is then used as your search query. The microphone is used only while you are actively using that feature, and only after you have granted permission. We do not record, store or transmit audio ourselves, and the App never listens in the background. You can use every part of the App by typing instead, and denying the microphone permission does not affect anything else.</p>
+<p><strong>A random installation identifier.</strong> Every place search costs money, so searches are limited per installation. The first time you search, the App generates a random string and keeps it in its own storage until you uninstall the App. It is not derived from your device, your accounts, or your advertising ID, it is sent only with search requests, and our server keeps only a one-way hash of it next to a request count.</p>
+<p><strong>Other technical data.</strong> When the App communicates with our backend (hosted on Supabase) or location services, standard technical information such as IP address, device type and operating system version may be processed transiently by those providers to deliver the service. Our server uses the IP address only to limit how many requests one address may make, keeping a shortened hash of it next to a count that the same purge deletes. We do not use this information to identify you.</p>
+<p>We do <strong>not</strong> collect:</p>
+<ul><li>Names, email addresses, phone numbers, or any contact details</li><li>Account credentials (there are none)</li><li>Photos, contacts, or files from your device</li><li>Advertising identifiers for tracking</li><li>Analytics or usage profiles that identify you</li></ul>
+<h2>3. How We Use Information</h2>
+<p>We use the limited information described above only to:</p>
+<ul><li>Display relevant location results</li><li>Generate the QR code you request</li><li>Transmit the QR code to the driver you designate</li><li>Maintain the basic functionality and security of the App</li></ul>
+<p>We do not use any information for advertising, profiling, marketing, or selling data.</p>
+<h2>4. Third-Party Services</h2>
+<p>We use the following third-party services to operate the App:</p>
+<ul><li><strong>Geoapify</strong> — location and places lookup. Involves your search text and, when you allow it, approximate coordinates.</li><li><strong>Supabase</strong> — backend infrastructure. Involves transient technical data and the short-lived destination described above.</li><li><strong>Google Maps</strong> — where the code you send is a Google Maps link, scanning it opens Google Maps on the driver's phone, and Google's own privacy policy governs what happens from that moment. We see nothing of it.</li><li><strong>OpenStreetMap</strong> — map tiles shown inside the App.</li></ul>
+<p>These providers process data only as needed to provide their services and are bound by their own privacy policies. We do not sell or share personal information with them for their own marketing purposes.</p>
+<h2>5. Data Retention</h2>
+<ul><li>Location and QR-related data are processed only for the short time needed to complete your request. The stored destination and code are deleted automatically at most about 61 minutes after creation, by a purge that runs every 15 minutes.</li><li>We do not retain personal location history or user-identifiable records on our servers.</li><li>Your own list of searched, pinned and recently sent places is kept only on your device and is not sent to us. You can clear it in the App at any time.</li><li>Technical logs held by our service providers are retained only as long as necessary for security, debugging, and legal compliance, then deleted or anonymized.</li></ul>
+<p>Because we do not maintain user accounts, there is no personal profile to delete.</p>
+<p><strong>One thing outlives that window.</strong> Where the code you send is a Google Maps link, the destination's coordinates are inside the link itself. Deleting our copy does not unmake a link someone already holds, and such a link cannot be expired or revoked. Send a code only to the driver you mean to send it to.</p>
+<h2>6. Your Choices and Rights</h2>
+<ul><li>You can deny or revoke location permission at any time in your device settings. The App will simply be unable to look up nearby places without it.</li><li>You can deny or revoke microphone permission at any time; voice search stops being offered and everything else works as before.</li><li>You can clear your local history of searched and pinned places from the App's home screen.</li><li>You can uninstall the App at any time; this removes all local data associated with it.</li><li>If you believe we hold any information about you and wish to request access, correction, or deletion, contact us using the details below. We will respond in accordance with applicable law.</li></ul>
+<h2>7. Children's Privacy</h2>
+<p>The App is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us and we will delete it.</p>
+<h2>8. Data Security</h2>
+<p>We implement reasonable technical and organizational measures to protect information processed through the App. All communication with our backend uses HTTPS, and codes are stored only as one-way hashes. However, no method of transmission over the internet or electronic storage is 100% secure.</p>
+<h2>9. International Users</h2>
+<p>The App is operated from the Philippines. If you access it from other regions, your information may be processed in countries that may have different data-protection laws than your own.</p>
+<h2>10. Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. The "Last Updated" date at the top will reflect any changes. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
+<h2>11. Contact Us</h2>
+<p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
+<ul><li><strong>Email:</strong> boydmilan@gmail.com</li><li><strong>Developer:</strong> Jerson Boyd Milan (personal project)</li><li><strong>Address:</strong> 233 Km. 6, Buhangin, Davao City, Davao del Sur, Philippines 8000</li></ul>
 </main>
 <footer><a href="./">PointDrop</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></footer>
 </body>
